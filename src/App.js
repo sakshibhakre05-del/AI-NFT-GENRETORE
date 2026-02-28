@@ -80,7 +80,7 @@ function App() {
   const createImage = async () => {
     setMessage('Generating Image...')
 
-    const response = await fetch(`https://ai-nft-generator-psi.vercel.app/`)', {
+    const response = await fetch('https://ai-nft-generator-psi.vercel.app/'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ description }),
