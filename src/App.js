@@ -11,7 +11,7 @@ import Landing from './components/Landing'
 import { useAuth } from './components/AuthContext'
 
 // ABIs
-import NFT from './abis/NFT.json'
+//import NFT from './abis/NFT.json'
 
 // Config
 import config from './config.json'
@@ -80,7 +80,8 @@ function App() {
   const createImage = async () => {
     setMessage('Generating Image...')
 
-    const response = await fetch('https://ai-nft-generator-psi.vercel.app/'), {
+    const response = await fetch(
+      'https://ai-nft-generator-psi.vercel.app/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ description }),
@@ -120,8 +121,8 @@ function App() {
 
     // 1. Upload File to IPFS
     const formData = new FormData()
-    const file = new File([imageData], 'image.png', { type: 'image/png' })
-    formData.append('file', file)
+    const file = new Blob([imageData], { type: 'image/png' })
+    formData.append('file', file, 'image.png')
 
     const pinataRes = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
       method: 'POST',
